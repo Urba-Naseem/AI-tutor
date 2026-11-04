@@ -218,3 +218,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# React / Node.js Frontend (Missing Items)
+node_modules/
+dist/
+build/
+.DS_Store
+
+# Docker / PostgreSQL Data (Missing Items)
+pgdata/
