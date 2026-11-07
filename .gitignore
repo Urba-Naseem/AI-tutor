@@ -1,0 +1,26 @@
+# Dependencies / environments
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Secrets and keys (never commit)
+.env
+*.env.local
+backend/keys/
+backend/certs/
+
+# Runtime data
+backend/data/
+backend/outbox/
+backend/backups/
+
+# Build output
+dist/
+build/
+frontend/dist/
+coverage/
+*.log
+.DS_Store
