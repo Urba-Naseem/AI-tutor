@@ -1,0 +1,142 @@
+/* ─────────────────────────────────────────────────────────────────────────────────────────────────────────
+   AI Tutor design tokens - "The marked notebook" (Ui design brief.md §2).
+   The ONLY file with raw colour, size and timing values. Everything else uses these variables.
+
+   Contrast (WCAG 2.2 AA, checked): text ≥ 4.5:1, borders / focus / chart marks ≥ 3:1, in light, dark and
+   high contrast. Two brief values were darkened slightly to pass: --ink-faint #7d89a3 → #65718b (captions were
+   3.3:1) and --near #9a640f → #96610e (near pill was 4.46:1). Dark values marked "derived" were not in the brief.
+   ───────────────────────────────────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Colour: light ── */
+  --paper: #f5f7fb;          /* page background */
+  --sheet: #ffffff;          /* cards / surfaces */
+  --sheet-raised: #fbfcfe;   /* nested surface, table header */
+  --ink: #14213d;            /* main text, sidebar */
+  --ink-soft: #4b5875;       /* secondary text (7.1:1 on sheet) */
+  --ink-faint: #65718b;      /* captions, placeholders, control borders (4.9:1 on sheet, 4.6:1 on paper) */
+  --rule: #d3dcea;           /* borders */
+  --rule-soft: #e8edf5;      /* dividers, bar track */
+  --action: #2747a6;         /* primary buttons, links, focus (8.3:1 on sheet) */
+  --action-hover: #1f3a8a;
+  --action-tint: #eef2fc;    /* selected rows, current step */
+  --on-action: #ffffff;      /* text on --action / --bad fills */
+  --margin: #c8373a;         /* the red threshold tick and the notebook margin ONLY */
+  --good: #23744f;  --good-bg: #e3f3ea;   /* attained, approved */
+  --near: #96610e;  --near-bg: #fcf1dc;   /* near, pending, draft */
+  --bad: #ad2c2c;   --bad-bg: #fbe8e8;    /* not attained, rejected, escalated */
+  --bad-hover: #8f2222;
+  --scrim: rgb(20 33 61 / 0.45);
+  --print-paper: #ffffff;    /* print stylesheet: black on white */
+  --print-ink: #000000;
+
+  /* Sidebar (navy, light text) */
+  --nav-bg: #14213d;
+  --nav-text: #e7ecf6;       /* 13.5:1 */
+  --nav-text-soft: #aab6cd;  /* 7.8:1 */
+  --nav-hover: #1d2c4f;
+  --nav-active: #27396a;
+  --nav-accent: #9bb1f4;     /* active item bar */
+  --nav-rule: #2a3a5a;
+
+  /* Code blocks (dark in both themes) and syntax colours (all ≥ 4.5:1 on --code-bg) */
+  --code-bg: #0f1a30;
+  --code-text: #e2e8f0;
+  --syntax-keyword: #93c5fd; --syntax-string: #fdba74; --syntax-number: #fcd34d; --syntax-comment: #94a3b8;
+  --syntax-title: #f8fafc; --syntax-meta: #c4b5fd; --syntax-variable: #e2e8f0; --syntax-deletion: #fca5a5; --syntax-addition: #86efac;
+
+  /* ── Typography ── */
+  --font-sans: 'Atkinson Hyperlegible', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Newsreader Variable', Newsreader, Georgia, 'Times New Roman', serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+  --text-caption: 0.78rem;  --leading-caption: 1.1rem;
+  --text-sm: 0.875rem;      --leading-sm: 1.3rem;
+  --text-base: 1rem;        --leading-base: 1.55rem;
+  --text-h4: 1.125rem;      --leading-h4: 1.6rem;
+  --text-h3: 1.3rem;        --leading-h3: 1.75rem;
+  --text-h2: 1.6rem;        --leading-h2: 2.05rem;
+  --text-h1: 2.1rem;        --leading-h1: 2.5rem;
+  --text-reading: 1.12rem;  --leading-reading: 1.7;
+  --reading-measure: 70ch;
+  --weight-regular: 400; --weight-medium: 500; --weight-bold: 700;
+
+  /* ── Spacing, shape, depth ── */
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-6: 24px; --space-8: 32px; --space-12: 48px; --space-16: 64px;
+  --radius-control: 6px;
+  --radius-card: 10px;
+  --radius-pill: 999px;
+  --shadow-card: 0 1px 2px rgba(20, 33, 61, 0.06), 0 1px 1px rgba(20, 33, 61, 0.04);
+  --shadow-raised: 0 12px 32px rgba(20, 33, 61, 0.16);
+  --border-width: 1px;
+  --margin-line: 2px;        /* the red notebook margin on ruled cards */
+  --focus-width: 3px;
+  --focus-offset: 2px;
+
+  /* ── Layout ── */
+  --sidebar-width: 248px;
+  --rail-width: 72px;
+  --topbar-height: 56px;
+  --bottom-nav-height: 64px;
+  --content-max: 1200px;
+  --control-height: 40px;
+  --control-height-sm: 32px;
+  --icon-size: 18px;
+  --icon-size-inline: 16px;
+  --icon-stroke: 1.75;
+
+  /* ── Motion ── */
+  --duration: 150ms;          /* hover / press */
+  --duration-panel: 220ms;    /* panels, modals */
+  --duration-fill: 500ms;     /* mastery bar fill */
+  --ease: ease-out;
+  --enter-offset: 8px;        /* page content fades up this far on route change */
+
+  color-scheme: light;
+}
+
+/* ── Colour: dark (system preference unless the viewer chose light) ── */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --paper: #0e1626; --sheet: #152036; --sheet-raised: #1a2742;               /* sheet-raised derived */
+    --ink: #e7ecf6; --ink-soft: #aab6cd; --ink-faint: #8794ad;                 /* ink-faint derived (5.3:1) */
+    --rule: #2a3a5a; --rule-soft: #22304d;                                     /* rule-soft derived */
+    --action: #7b98f0; --action-hover: #9bb1f4; --action-tint: #1d2c50;        /* hover, tint derived */
+    --on-action: #0e1626;                                                      /* dark text on light fills (6.5:1) */
+    --margin: #f06b6e;
+    --good: #6fd3a2; --good-bg: #123526; --near: #f0bd62; --near-bg: #3a2a0c; --bad: #f39191; --bad-bg: #3e1a1d; --bad-hover: #f7b0b0;
+    --scrim: rgb(0 0 0 / 0.6);
+    --nav-bg: #0b1220; --nav-hover: #15203a; --nav-active: #1d2c50; --nav-rule: #22304d;
+    --code-bg: #0a111f;
+    --shadow-card: none; --shadow-raised: 0 12px 32px rgba(0, 0, 0, 0.45);
+    color-scheme: dark;
+  }
+}
+:root[data-theme='dark'] {
+  --paper: #0e1626; --sheet: #152036; --sheet-raised: #1a2742;
+  --ink: #e7ecf6; --ink-soft: #aab6cd; --ink-faint: #8794ad;
+  --rule: #2a3a5a; --rule-soft: #22304d;
+  --action: #7b98f0; --action-hover: #9bb1f4; --action-tint: #1d2c50;
+  --on-action: #0e1626;
+  --margin: #f06b6e;
+  --good: #6fd3a2; --good-bg: #123526; --near: #f0bd62; --near-bg: #3a2a0c; --bad: #f39191; --bad-bg: #3e1a1d; --bad-hover: #f7b0b0;
+  --scrim: rgb(0 0 0 / 0.6);
+  --nav-bg: #0b1220; --nav-hover: #15203a; --nav-active: #1d2c50; --nav-rule: #22304d;
+  --code-bg: #0a111f;
+  --shadow-card: none; --shadow-raised: 0 12px 32px rgba(0, 0, 0, 0.45);
+  color-scheme: dark;
+}
+
+/* ── High contrast (existing accessibility option; applies on top of either theme): black / white / yellow ── */
+:root[data-contrast='high'] {
+  --paper: #000; --sheet: #000; --sheet-raised: #0d0d0d;
+  --ink: #fff; --ink-soft: #f0f0f0; --ink-faint: #d9d9d9;
+  --rule: #fff; --rule-soft: #4d4d4d;
+  --action: #ffd400; --action-hover: #ffe45c; --action-tint: #1a1a1a; --on-action: #000;
+  --margin: #ff6b6b;
+  --good: #7dffb3; --good-bg: #000; --near: #ffd400; --near-bg: #000; --bad: #ff8a80; --bad-bg: #000; --bad-hover: #ffb3ab;
+  --scrim: rgb(0 0 0 / 0.85);
+  --nav-bg: #000; --nav-text: #fff; --nav-text-soft: #f0f0f0; --nav-hover: #1a1a1a; --nav-active: #1a1a1a; --nav-accent: #ffd400; --nav-rule: #fff;
+  --code-bg: #000; --code-text: #fff;
+  --shadow-card: none; --shadow-raised: none;
+  color-scheme: dark;
+}
