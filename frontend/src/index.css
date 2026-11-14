@@ -590,7 +590,7 @@ pre.plain { white-space: pre-wrap; background: var(--color-surface-2); border: 1
 
 /* ── Redesign layer: professional shell, stat tiles, charts, path timeline ─────────────────────────────
    Tokens only (DESIGN.md §2–§4). White cards on a soft canvas give depth; charts use the --chart-* marks
-   (validated palette); every status keeps its icon + text label (CLAUDE.md §1). */
+   (validated palette); every status keeps its icon + text label (UI rules §1). */
 
 /* Cards: crisp white on the canvas, a softer two-layer shadow */
 .card, .stats > div, .steps-group, .table-wrap { box-shadow: var(--shadow-card); }

@@ -1,6 +1,6 @@
 import { useState, type InputHTMLAttributes } from 'react'
 
-/** Password field with a labelled show/hide toggle (CLAUDE.md §6). Takes the same props as <input>. */
+/** Password field with a labelled show/hide toggle (UI rules §6). Takes the same props as <input>. */
 export default function PasswordInput(props: Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> & { id: string }) {
   const [shown, setShown] = useState(false)
   return (

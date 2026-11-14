@@ -2,7 +2,7 @@ import { useEffect, useId, useRef, useState, type FormEvent } from 'react'
 import { registerDialog, type DialogRequest } from './dialogApi'
 
 /**
- * Accessible replacement for window.confirm / window.prompt (CLAUDE.md §1 dialogs, §4 destructive actions).
+ * Accessible replacement for window.confirm / window.prompt (UI rules §1 dialogs, §4 destructive actions).
  * Uses the native <dialog> in modal mode: focus is trapped, Escape cancels, and focus returns to the
  * control that opened it. Mount <DialogHost /> once; call askConfirm / askText (dialogApi.ts) from handlers.
  */
